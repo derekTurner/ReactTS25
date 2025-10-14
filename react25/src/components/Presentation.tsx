@@ -1,15 +1,10 @@
-import React, { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
+//import { useParams } from 'react-router-dom';
+import { useRouteLoaderData } from 'react-router-dom';
 
 const Presentation: React.FC = () => {
-  const [content, setContent] = useState<string>("");
-
-  useEffect(() => {
-    fetch("/assets/page1/SveltePresentation.md")
-      .then((res) => res.text())
-      .then((text) => setContent(text))
-      .catch((error) => console.error("Error loading markdown:", error));
-  }, []);
+  //const { productId } = useParams(); // Access params in component (still works)
+  const content = useRouteLoaderData("root"); // Access loader data
 
   return (
     <div className="presentation-container" style={{ padding: 20 }}>
