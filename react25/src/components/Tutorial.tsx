@@ -4,7 +4,7 @@ import { useRouteLoaderData } from 'react-router-dom';
 
 const Tutorial: React.FC = () => {
   //const { productId } = useParams(); // Access params in component (still works)
-  const content = useRouteLoaderData("root"); // Access loader data
+  const content = useRouteLoaderData("tutorial"); // Access loader data
 
   return (
     <div className="presentation-container" style={{ padding: 20 }}>
