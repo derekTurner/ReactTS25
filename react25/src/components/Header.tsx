@@ -1,15 +1,19 @@
-import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
 const Header = () => {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
-      <Navbar.Brand href="#home">Svelte Starter</Navbar.Brand>
+      <LinkContainer to="/">
+        <Navbar.Brand>Svelte Starter</Navbar.Brand>
+      </LinkContainer>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
           <LinkContainer to="/">
+            <Nav.Link>Home</Nav.Link>
+          </LinkContainer>
+          <LinkContainer to="/presentation">
             <Nav.Link>Presentation</Nav.Link>
           </LinkContainer>
           <LinkContainer to="/tutorial">

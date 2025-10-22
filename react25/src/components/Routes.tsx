@@ -1,20 +1,16 @@
-// https://dev.to/utkvishwas/react-router-v7-a-comprehensive-guide-migration-from-v6-7d1
 import {
   createHashRouter,
-  RouterProvider,
 } from "react-router-dom";
 import Presentation from "./Presentation";
 import Tutorial from "./Tutorial";
 import NoMatch from "./NoMatch";
 import Header from "./Header";
 
+const page1 = "assets/page1/SveltePresentation.md";
+const page2 = "assets/page2/SvelteTutorial.md"; // Fixed path to page2
 
-  const page1 = "assets/page1/SveltePresentation.md";
-  const page2 = "assets/page1/SvelteTutorial.md";
-
-  const router =  createHashRouter([
+export const router = createHashRouter([
     {
-      id: "root", // Add this id to match useRouteLoaderData("root")
       path: "/",
       element: (<><h1>Routes.tsx</h1><Header/><Presentation /></>),
       loader: async () => fetch(page1)
@@ -22,6 +18,7 @@ import Header from "./Header";
         .catch((error) => console.error("Error loading markdown:", error))
     },
     {
+      id: "tutorial", // Add this id to match useRouteLoaderData("tutorial")
       path: "/tutorial",
       element: (<><Header/><Tutorial  /></>),
       loader: async () => fetch(page2)
