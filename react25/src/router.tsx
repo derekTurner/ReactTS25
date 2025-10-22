@@ -1,12 +1,12 @@
 import { createHashRouter } from "react-router-dom";
 import Home from "./components/Home";
-import Presentation from "./components/Presentation";
-import Tutorial from "./components/Tutorial";
+import Display from "./components/Display";
 import NoMatch from "./components/NoMatch";
 import Header from "./components/Header";
 
-const page1 = "assets/page1/SveltePresentation.md";
-const page2 = "assets/page2/SvelteTutorial.md";
+// Ensure these paths are correct relative to the public directory
+const presentationPath = "/src/assets/page1/Presentation.md";
+const tutorialPath = "/src/assets/page2/Tutorial.md";
 
 export const router = createHashRouter([
     {
@@ -25,22 +25,19 @@ export const router = createHashRouter([
         <Header />
         <Home />
       </>
-    ),
-    loader: async () =>
-      fetch(page2)
-        .then((res) => res.text())
-        .catch((error) => console.error("Error loading markdown:", error)),
+    )
+
   },  
   {
     path: "/presentation",
     element: (
       <>
         <Header />
-        <Presentation />
+        <Display />
       </>
     ),
     loader: async () =>
-      fetch(page1)
+      fetch(presentationPath)
         .then((res) => res.text())
         .catch((error) => console.error("Error loading markdown:", error)),
   },
@@ -49,11 +46,11 @@ export const router = createHashRouter([
     element: (
       <>
         <Header />
-        <Tutorial />
+        <Display />
       </>
     ),
     loader: async () =>
-      fetch(page2)
+      fetch(tutorialPath)
         .then((res) => res.text())
         .catch((error) => console.error("Error loading markdown:", error)),
   },
