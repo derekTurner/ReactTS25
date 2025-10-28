@@ -1,18 +1,18 @@
 import {
   createHashRouter,
+  RouterProvider
 } from "react-router-dom";
-import Presentation from "./Presentation";
-import Tutorial from "./Tutorial";
+import Display from "./Display";
 import NoMatch from "./NoMatch";
 import Header from "./Header";
 
 const page1 = "assets/page1/SveltePresentation.md";
 const page2 = "assets/page2/SvelteTutorial.md"; // Fixed path to page2
 
-export const router = createHashRouter([
+const router = createHashRouter([
     {
       path: "/",
-      element: (<><h1>Routes.tsx</h1><Header/><Presentation /></>),
+      element: (<><h1>Routes.tsx</h1><Header/><Display /></>),
       loader: async () => fetch(page1)
         .then((res) => res.text())
         .catch((error) => console.error("Error loading markdown:", error))
@@ -20,7 +20,7 @@ export const router = createHashRouter([
     {
       id: "tutorial", // Add this id to match useRouteLoaderData("tutorial")
       path: "/tutorial",
-      element: (<><Header/><Tutorial  /></>),
+      element: (<><Header/><Display  /></>),
       loader: async () => fetch(page2)
         .then((res) => res.text())
         .catch((error) => console.error("Error loading markdown:", error))
